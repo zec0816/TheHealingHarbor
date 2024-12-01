@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+body {
+  background-image: url("images/forest.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login-container {
+  width: 450px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 100px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.signup-container {
+  width: 450px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 25px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.form-button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-button .formbtn {
+  background-color: #119716;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-link a {
+  text-decoration: none;
+  color: #119716;
+}
+
+.form-link a:hover {
+  text-decoration: underline;
+}
+
+.form-link i {
+  font-style: italic;
+}
+
+.form-body input[type="text"],
+.form-body input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.form-body input[type="text"]:focus,
+.form-body input[type="password"]:focus {
+  outline: none;
+  border: 1px solid #119716;
+}
+
+.form-body .formbtn {
+  width: 100%;
+}
+
+.form-end {
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+}
+
+
+.message{
+  margin: 20px 0px 10px;
+  margin-top: -15px;
+  padding: 25px;
+  width: 100%;
+  background-color: #13e146;
+  color: #ffffff;
+  z-index: 10;
+  position: relative;
+}
+
+.message.success {
+  background-color: #03b12c;
+}
+
+.message.eror {
+  background-color: #ffa361;
+}
+
+.closebtn{
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s
+}
+
+.closebtn:hover {
+  color: black;
+}

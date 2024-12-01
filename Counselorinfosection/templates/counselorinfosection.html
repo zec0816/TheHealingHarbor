@@ -1,0 +1,55 @@
+{% extends 'counselornav.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Info Section</title>
+</head>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'counselorinfosectionstyle.css' %}">
+<body>
+  <div class="main">
+    <!-- displaying the info section and counselor is able to edit or delete -->
+    <div class="intro">
+      <h1>Mental Wellness: Taking Care of Your Mental Health</h1><br><br>
+      <p><i>Empowering Minds, Embracing Wellness: Your Journey to Mental Well-Being Begins Here</i></p>
+    </div>
+    <br>
+    <div class="infos">
+      <table>
+        <div class="content">
+          {% for x in info %}
+          <tr>
+            <td>
+              <div class="t1">
+                <div class="zoom">
+                  <div id="info_title">{{x.title}}</div>
+                </div>
+              </div>
+            </td>
+            <div class="desc">
+              <td class="t2">
+                {{x.info}}
+              </td>
+            </div>
+            <td>
+              <a href="infoupdate/{{x.id}}"><button id="up"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+            </td>
+            <td>
+              <a href="infodelete/{{x.id}}"><button id="del"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </div>
+      </table>
+      <br><br><br>
+      <a href="{% url 'infosection:infoadd' %}"><button id="new3">Add an info</button></a>
+    </div>
+  </div>
+  <br><br>
+</body>
+</html>
+{% endblock content %}

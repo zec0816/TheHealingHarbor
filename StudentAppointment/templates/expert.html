@@ -1,0 +1,94 @@
+{% extends 'studentnavbar.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'studentexpertstyle.css' %}">
+        <!--Icons-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>List of Experts</title>
+    </head>
+    
+    <body>
+      {% if messages %}
+        {% for message in messages %}
+          <div class="message {% if message.tags %}{% spaceless %}{% for tag in message.tags %}{{ tag }}{% endfor %}{% endspaceless %}{% endif %}">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+        {% if not query %}
+          {% if not counselors %}
+          <div class="message" id="message">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <p id="reminder" class="reminder">No counselors are available now.</p>
+          </div>
+          {% endif %}
+        {% endif %}
+
+        <div class="header">
+          <div class="top">
+            <div class="search">
+              <div class="input-box">
+                <form method="get" action="{% url 'StudentAppointment:experts' %}">
+                  <input type="text" class="searchInput" placeholder="Search by Expert Name" name="query">
+                  <button class="searchIcon"><span></span></button>
+                  <button>
+                    <span class="close" onclick="clearSearchInput(this, event);"></span>
+                  </button>
+                </form>
+              </div>
+              
+            </div>
+          </div>
+
+        </div>
+
+        <div class="ExpertPage">
+            {% if counselors %}
+            <div class="expertbox">
+                {% for counselor in counselors %}
+                <div class="counselortable">
+                    <table>
+                        <div class="counselorcontent">
+                            <tr>
+                              <td>
+                                <div class="t1">
+                                      {% if counselor.counselor_profile %}
+                                      <img src="{{ counselor.counselor_profile.url }}" alt="Profile Picture" class="profile">
+                                      {% else %}
+                                      <img src="{% static 'images/default.png' %}" alt="Default Profile Picture" class="profile">
+                                      {% endif %}
+                                </div>
+                              </td>
+                              <div class="desc"></div>
+                              <td class="t2">
+                                  <h3>{{ counselor.full_name }}</h3><br>
+                                  <p>Qualifications : {{ counselor.qualification }}</p><br>
+                                  <p>Self Description : {{ counselor.self_description }}</p>
+                                  <a href="{% url 'StudentAppointment:appointment' counselor.pk %}" class="appointmentbtn">Book Appointment</a>
+                              </td>
+                          </tr>
+                        </div>
+                    </table>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+            <script>
+              function clearSearchInput(element, event) {
+               event.preventDefault(); // Prevent form submission
+               var searchInput = element.closest('.input-box').querySelector('.searchInput');
+               searchInput.value = ''; // Clear the search input
+               window.location.href = "{% url 'StudentAppointment:experts' %}";
+        }
+        </script>
+        </body>
+</html>
+{% endblock content %}

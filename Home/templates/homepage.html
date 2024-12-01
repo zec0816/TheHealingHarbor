@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'homepagestyle.css' %}">
+        <!--Icons-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>The Empathy Oasis</title>
+    </head>
+
+    <body>
+        <div class="homepage">
+            <header>
+                <img src="{% static 'images/logo.png' %}" class="logo">
+                <nav class="navigation">
+                    <a href="{% url 'Home:home' %}" class="active">Home</a>
+                    <a href="{% url 'UserTestimonial:testimonial' %}">Inspire</a>
+                    <a href="{% url 'UserExercise:exercise' %}">Nurture</a>
+                    <a href="{% url 'UserRead:read' %}">Explore</a>
+                    <a href="{% url 'Home:login' %}">Log In</a>
+                </nav>
+            </header>
+            <section class="top">
+                <img src="{% static 'images/hill1.png' %}" id="hill1">
+                <img src="{% static 'images/hill2.png' %}" id="hill2">
+                <img src="{% static 'images/hill3.png' %}" id="hill3">
+                <img src="{% static 'images/hill4.png' %}" id="hill4">
+                <img src="{% static 'images/hill5.png' %}" id="hill5">
+                <img src="{% static 'images/tree.png' %}" id="tree">
+                <img src="{% static 'images/leaf.png' %}" id="leaf">
+                <h2 id="text">The Empathy Oasis</h2>
+                <img src="{% static 'images/plant.png' %}" id="plant">
+            </section>
+            <section class = thi2>
+                <div class = "quote1">
+                    <div class = "quote1-img">
+                        <img src = "{% static 'images/rock1.png'%}">
+                    </div>
+                    <div class = "quote1-1">
+                        <h2>"Depression never discriminates. Took me a long time to realize it but the key is not to be afraid to open up" <i>- Dwayne Johnson</i></h2>
+                    </div>
+                    <div class = "quote1-2">
+                        <img src = "{% static 'images/rock2.png'%}">
+                    </div>
+                </div>
+                <div class = "quote2">
+                    <div class = "quote2-1">
+                        <img src = "{% static 'images/danmill.png'%}">
+                    </div>
+                    <div class = "quote2-2">
+                        <h2>"You don’t have to control your thoughts. You just have to stop letting them control you." <i>- Dan Millman</i></h2>
+                    </div>
+                </div>
+            </section>
+            <section class = "fourth" id="fourth">
+                <div class = "imgbox1">
+                    <img src = "{% static 'images/back.png'%}">
+                </div>
+                <div class = "reghand">
+                    <div class = "register">
+                        <h2><i>Everyone faces <br>mental health issues.<br>Register with us,<br>let us help.</i></h2>
+                    </div>
+                    <div class = "hand">
+                        <a href="{% url 'Home:signup' %}"><img src = "{% static 'images/hand.png'%}">
+                    </div>
+                </div>
+                <div class = "imgbox2">
+                    <img src = "{% static 'images/facing.png'%}">
+                </div>
+            </section>
+        </div>
+        <!-- Styling purpose -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            let text = document.getElementById('text');
+            let leaf = document.getElementById('leaf');
+            let hill1 = document.getElementById('hill1');
+            let hill4 = document.getElementById('hill4');
+            let hill5 = document.getElementById('hill5');
+        
+            window.addEventListener('scroll', () => {
+                let value = window.scrollY;
+                if (value >= 0 && value <= 500) {
+                    text.style.marginTop = value * 1 + 'px';
+                }
+                if (value >= 0 && value <= 1000) {
+                    leaf.style.top = value * -1.5 + 'px';
+                }        
+                if (value >= 0 && value <= 500) {
+                    hill4.style.left = value * -1.5 + 'px';
+                }
+                if (value >= 0 && value <= 500) {
+                    hill1.style.top = value * 1.5 + 'px';
+                }
+            });
+
+            $(document).ready(function(){
+  // Add smooth scrolling to all links
+             $("a").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+             if (this.hash !== "") {
+      // Prevent default anchor click behavior
+               event.preventDefault();
+               var hash = this.hash;
+               $('html, body').animate({
+                 scrollTop: $(hash).offset().top
+               }, 800, function(){
+                 window.location.hash = hash;
+               });
+            } 
+            });
+        });
+
+        </script>
+        
+    </body>
+</html>

@@ -1,0 +1,91 @@
+{% extends 'counselornav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--style for StudentHome.html-->
+    {% load static %}
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'studentprofilestyle.css' %}">-->
+    <title>Counselor Profile</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'profilecardstyle.css' %}">
+</head>
+
+<body class="counselor-profile">
+    <!-- displaying message if any -->
+    {% if messages %}
+          {% for message in messages %}
+            <div class="message {% if message.tags %}{% spaceless %}{% for tag in message.tags %}{{ tag }}{% endfor %}{% endspaceless %}{% endif %}">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              {{ message }}
+            </div>
+          {% endfor %}
+    {% endif %}
+
+    {% if profile.self_description and profile.qualification %}
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => {
+                const errorDiv = document.getElementById("error");
+                errorDiv.style.display = "none";
+            });
+
+            function closeErrorMessage() {
+                const errorDiv = document.getElementById("error");
+                errorDiv.style.display = "none";
+            }
+        </script>
+    {% else %}
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => {
+                const errorDiv = document.getElementById("error");
+                errorDiv.style.display = "block";
+            });
+
+            function closeErrorMessage() {
+                const errorDiv = document.getElementById("error");
+                errorDiv.style.display = "none";
+            }
+        </script>
+    {% endif %}
+
+    <div id="error">
+        <div class="closebtn">
+            <span onclick="closeErrorMessage()">&times;</span>
+        </div>
+        <center>
+            <h3 class="errorMessagequiz">Please fill in your description and qualification!</h3>
+        </center>
+    </div>
+
+    <br><br>
+    <!-- showing profile card -->
+    <div class="smartphone">
+        <div class="content">
+            <div class="profile-card">
+                <div class="profile-banner"></div>
+                <div class="profile-picture">
+                    {% if profile.counselor_profile %}
+                    <img src="{{ profile_picture_url }}" alt="Profile Picture" id="profilepicture">
+                    {% endif %}
+                </div>
+                <div class="profile-details">
+                    <p><b>Email address: </b>{{ profile.user.username }}</p>
+                    <p><b>Full Name: </b>{{ profile.full_name }}</p>
+                    <p><b>Mobile Number: </b>{{ profile.phone_number }}</p>
+                    <div class="desc"><p><b>Self Description: </b>{{ profile.self_description }}</p></div>
+                    <div class="desc"><p><b>Qualification: </b>{{ profile.qualification }}</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button-container">
+        <a href="{% url 'CounselorProfile:counselorchangepassword' %}" id="btn">Change Password</a>
+        <a href="{% url 'CounselorProfile:counseloredit' %}" id="btn">Update Profile</a>
+    </div>
+    <br><br>
+</body>
+</html>
+
+{% endblock content %}

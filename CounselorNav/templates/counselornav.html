@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Counselor {% endblock title %}</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Static CSS -->
+    <link rel="stylesheet" href="{% static 'counselornavstyle.css' %}">
+</head>
+<body>
+  <div class="wrapper">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="main_body">
+      <!--sidebar-->
+      <aside>
+          <img src="{% static 'logo.png' %}" class="logo">
+          <div class="option">
+            <a href="{% url 'infosection:info' %}" class="{% if request.resolver_match.url_name == 'info' %}active{% endif %}"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+            <a href="{% url 'CounselorProfile:counselorprofile' %}" class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}"><i class="fa fa-user-circle-o" aria-hidden="true"></i>My profile</a>
+            <a href="{% url 'CounselorSchedule:index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}" id="box"><i class="fa fa-table" aria-hidden="true"></i>My Schedule</a>
+            <!-- <a href="{% url 'CounselorAppointment:counselor_appointments'%}" id="box"><i class="fa fa-calendar-o" aria-hidden="true"></i>Appointments</a>
+            <a href="{% url 'CounselorQuiz:quiz_question_list' %}" class="{% if request.resolver_match.url_name == 'quiz_question_list' %}active{% endif %}" id="box"><i class="fa fa-file-text-o" aria-hidden="true"></i>Mental Health Quiz</a>
+            <a href="{% url 'CounselorProgressReport:progress' %}" class="{% if request.resolver_match.url_name == 'progress' %}active{% endif %}" id="box"><i class="fa fa-book" aria-hidden="true"></i>Progress Report</a> -->
+            <a href="{% url 'Home:home' %}" class="{% if request.resolver_match.url_name == 'home'}"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a>
+          </div>
+        </aside>
+      <!--sidebar end-->
+
+      <div class="content">
+          {% block content %} {% endblock content %}
+      </div>
+  </div>
+
+<!-- ============================================== Content Page Here ============================================== -->
+<!-- Block content from other pages denied here -->
+<!-- ============================================= END // Content Page ============================================= -->
+
+</body>
+</html>

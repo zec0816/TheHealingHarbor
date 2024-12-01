@@ -1,0 +1,54 @@
+{% extends 'studentnavbar.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--style for StudentHome.html-->
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'studentprofilestyle.css' %}">
+        <!--Icons-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Student Profile</title>
+    </head>
+
+    <body class="student-profile">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="message {% if message.tags %}{% spaceless %}{% for tag in message.tags %}{{ tag }}{% endfor %}{% endspaceless %}{% endif %}">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              {{ message }}
+            </div>
+          {% endfor %}
+          {% endif %}
+          
+        <div class="smartphone">
+            <div class="content">
+                <div class="profile-card">
+                    <div class="profile-banner"></div>
+                    <div class="profile-picture">
+                        {% if profile.student_profile %}
+                        <img src="{{ profile_picture_url }}" alt="Profile Picture" id="profilepicture">
+                        {% endif %}
+                    </div>
+                    <div class="profile-details">
+                        <p><b>Email address: </b>{{ profile.user.username }}</p>
+                        <p><b>Full Name: </b>{{ profile.full_name }}</p>
+                        <p><b>Mobile Number: </b>{{ profile.phone_number }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button-container">
+            <a href="{% url 'StudentProfile:studentchangepassword' %}" id="btn">Change Password</a>
+            <a href="{% url 'StudentProfile:studentedit' %}" id="btn">Update Profile</a>
+        </div>
+        <br><br>
+    </body>
+</html>
+
+{% endblock content %}
+
+

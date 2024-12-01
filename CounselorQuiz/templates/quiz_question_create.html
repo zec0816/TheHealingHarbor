@@ -1,0 +1,53 @@
+{% extends 'counselornav.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'counselorschedulestyle.css' %}">
+<body>
+    <div class="moving_title">
+        <span>A</span>
+        <span>D</span>
+        <span>D</span>
+        <span></span>
+        <span>A</span>
+        <span></span>
+        <span>Q</span>
+        <span>U</span>
+        <span>E</span>
+        <span>S</span>
+        <span>T</span>
+        <span>I</span>
+        <span>O</span>
+        <span>N</span>
+    </div>
+    <br><br>
+    <div class="container1">
+        <!-- to create a new question -->
+        <form method="post">
+            {% csrf_token %}
+            <label for="question_text">Question Text:</label>
+            <input type="text" name="question_text" required><br><br>
+            <label for="option_text">Option Text:</label>
+            <input type="text" name="option_text" required><br><br>
+            <label for="score">Score:</label>
+            <input type="number" name="score" min="0" max="5" required><br><br>
+            <label for="option_text">Option Text:</label>
+            <input type="text" name="option_text" required><br><br>
+            <label for="score">Score:</label>
+            <input type="number" name="score" min="0" max="5" required><br><br>
+            <label for="option_text">Option Text:</label>
+            <input type="text" name="option_text" required><br><br>
+            <label for="score">Score:</label>
+            <input type="number" name="score" min="0" max="5" required><br><br>
+            <input type="submit" value="Create" id="new">
+        </form>
+    </div>
+</body>
+{% endblock content %}

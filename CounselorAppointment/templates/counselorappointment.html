@@ -1,0 +1,57 @@
+{% extends 'CounselorNav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Styling CSS -->
+      <link rel="stylesheet" href="{% static 'counselorschedulestyle.css' %}">
+      <!-- Icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <title>Counselor Appointment</title>        
+  </head>
+  <!-- ================== displaying the booked appointments ==================-->
+  <body class="schedule">
+    {% if messages %}
+        {% for message in messages %}
+          <div class="message {% if message.tags %}{% spaceless %}{% for tag in message.tags %}{{ tag }}{% endfor %}{% endspaceless %}{% endif %}">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    <div class="container">
+        <h1 id="title">MY APPOINTMENTS</h1>
+        <br><br>
+        <table id="customers" class="design">
+            <thead>
+                <th>STUDENT</th>
+                <th>DATE</th>
+                <th>TIMESLOT</th>
+                <th>TITLE</th>
+                <th>DESCRIPTION</th>
+                <th colspan="2" id="mid">DELETE</th>
+            </thead>
+            {% for appointment in appointments %}
+            <tbody>
+                <tr>
+                  <td>{{ appointment.student }}</td>
+                  <td>{{ appointment.timeslot.date }}</td>
+                  <td>{{ appointment.timeslot }}</td>
+                  <td>{{ appointment.title }}</td>
+                  <td>{{ appointment.description }}</td>
+                  <td>
+                    <a href="{% url 'CounselorAppointment:appointment_delete' appointment.id %}"><button id="del"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a>
+                  </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+  </body>
+</html>
+{% endblock content %}
+
+

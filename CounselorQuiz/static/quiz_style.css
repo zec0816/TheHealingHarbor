@@ -1,0 +1,78 @@
+body{
+    background: #ECECEC;
+    background-image: url("images/quiz_pattern.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#up {
+    background-color: #627269;
+    border-color: white;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+}
+
+#del {
+    background-color: #D1493E;
+    border-color: white;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+}
+
+#add {
+    padding: 13px;
+    background-color: #627269;
+    color: white;
+    border-color: white;
+    border-radius: 5px;
+    margin-left: -25px;
+}
+
+button:active {
+    opacity: 0.8;
+}
+
+button {
+    margin-left: 8px;
+}
+
+#title {
+    margin-left: -25px;
+    color: #0f6e62;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.question-container {
+    background-color: #FFF;
+    width: 940px;
+    padding: 20px;
+    margin-left: -25px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.question-container:hover {
+    background-color: #f5f5f5;
+}
+
+.question-text {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.option-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.option-item {
+    margin-bottom: 5px;
+    color: #555;
+}

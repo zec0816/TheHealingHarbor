@@ -1,0 +1,11 @@
+{% extends 'counselornav.html' %}
+{% block content %}
+<!-- confirmation to delete question -->
+    <h1>Delete Quiz Question</h1>
+    <p>Are you sure you want to delete the following question?</p>
+    <h3>{{ question.question_text }}</h3>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+{% endblock content %}

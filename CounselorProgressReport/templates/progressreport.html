@@ -1,0 +1,118 @@
+{% extends 'CounselorNav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Style for StudentHome.html -->
+    <link rel="stylesheet" type="text/css" href="{% static 'progressreportstyle.css' %}">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Progress Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Parse the test scores JSON (showing pie chart based on test scores)
+        var testScores = JSON.parse('{{ test_scores_json|escapejs }}');
+    
+        document.addEventListener("DOMContentLoaded", function() {
+            var scores = [];
+            var labels = [];
+            var countGood = 0;
+            var countMild = 0;
+            var countPoor = 0;
+
+            testScores.forEach(function(testScore) {
+                scores.push(testScore.score);
+
+                if (testScore.score >= 0 && testScore.score <= 8) {
+                    countGood++;
+                } else if (testScore.score >= 9 && testScore.score <= 15) {
+                    countMild++;
+                } else if (testScore.score >= 16) {
+                    countPoor++;
+                }
+            });
+
+            var ctx = document.getElementById('scoreChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Good', 'Mild', 'Poor'],
+                    datasets: [{
+                        data: [countGood, countMild, countPoor],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(255, 99, 132, 0.7)'
+                        ],
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Test Score Distribution'
+                    },
+                    tooltips: {
+                        callbacks: {
+                            label: function(tooltipItem, data) {
+                                var dataset = data.datasets[tooltipItem.datasetIndex];
+                                var count = dataset.data[tooltipItem.index];
+                                var label = data.labels[tooltipItem.index];
+                                return label + ': ' + count;
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+        
+</head>
+
+<body>
+    <div class="main_rectangle">
+        <div class="header">
+            <center>
+                <h1 id="title">Progress Report</h1>
+            </center>
+        </div>
+        <br><br>
+        <div class="rectangle">
+            <table>
+                <tr>
+                    <td>
+                        <div class="score_table">
+                            <table>
+                                <thead>
+                                    <th>Student Name</th>
+                                    <th>Mental Quiz Score</th>
+                                </thead>  
+                                {% for test_score in test_scores %}
+                                <tbody>
+                                <tr>
+                                    <td>{{ test_score.student }}</td>
+                                    <td>{{ test_score.score }}</td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="chart_container">
+                            <canvas id="scoreChart"></canvas>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}

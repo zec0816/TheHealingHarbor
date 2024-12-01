@@ -1,0 +1,445 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.AppointmentPage{
+  height: 100vh;
+}
+
+.AppointmentForm{
+  margin-bottom: 100px;
+}
+
+/* styling radio button */
+ul.timeContainer {
+  padding: 20px 0px;
+  padding-right: 20px;
+  list-style-type: none;
+  display: flex; /* Updated property */
+  flex-direction: row;
+  flex-wrap: wrap; /* Added property */
+  
+}
+
+ul.timeContainer li {
+  margin: 3px;
+}
+
+ul.timeContainer li label{
+  display: inline-block;
+  background-color: transparent;
+  border: 1px solid #939393;
+  color: #064c3c;
+  border-radius: 25px;
+  white-space: nowrap;
+  margin: 3px 15px;
+  user-select: none;
+  transition: all .2s;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+
+ul.timeContainer li label:hover{
+  border: 1px solid #2ca085;
+  background-color: #2ca085;
+  color: #dff9f3;
+}
+
+ul.timeContainer li input[type="radio"]:checked+label{
+  border: 1px solid #258670;
+  background-color: #258670;
+  color: #fff;
+  transition: all .2s;
+}
+
+ul.timeContainer li input[type="radio"] {
+  display: none;
+  position: absolute;
+  opacity: 0;
+}
+
+.dateinputBox {
+  margin: 10px 0px;
+  display: inline-flex;
+}
+
+
+/* styling drop down */
+.inputBoxdate, .inputBoxdate * {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    box-sizing: border-box;
+    width: fit-content;
+}
+
+.inputBoxdate{
+  position: relative;
+  background-color: #7dbaac;
+  width: fit-content;
+  max-width: 100%;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+  margin: 10px 20px;
+  font-size:18px;
+}
+
+.inputBoxdate select {
+    font-size: 1rem;
+    font-weight: normal;
+    padding: 8px 24px 8px 10px;
+    border: none;
+    background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    appearance: none;
+    width: 268px;
+    line-height: 1;
+    border-radius: 5px;
+    height: 34px;
+}
+
+.inputBoxdate select:active, .inputBoxdate select:focus {
+    outline: none;
+    box-shadow: none;
+}
+.inputBoxdate:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    width: 0;
+    height: 0;
+    margin-top: -2px;
+    border-top: 5px solid #616161;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+}
+
+.timeselection {
+  margin-right: 10px;
+  display: none;
+}
+
+.headText{
+  margin-bottom: 40px;
+}
+
+/* input box styling */
+.inputBoxtitle, .inputBox{
+  margin: 20px 20px 60px 0px;
+  position:relative; 
+}
+
+.inputBoxtitle{
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.inputBox input[readonly] {
+  border-style: dotted;
+  cursor: not-allowed;
+  background-color: transparent;
+  width: fit-content;
+  padding: 10px 20px;
+  margin-right: 70px;
+  font-size:18px;
+}
+
+.inputBox input[readonly]:focus{
+  outline-color: #0a755c;
+}
+
+.appointmentTitle, .inputBox input[readonly] {
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.appointmentTitle{
+  border: none;
+  border-bottom:1px solid #757575;
+  border-radius: 5px;
+}
+
+.appointmentTitle:focus { 
+  outline:none; 
+}
+
+.pop, .pop1 {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+
+/* active state */
+.appointmentTitle:focus ~ .pop, .appointmentTitle:valid ~ .pop, .pop1    {
+  top:-30px;
+  font-size:14px;
+  color:#076b57;
+}
+
+.names, .slot{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid white;
+  border-radius: 20px;
+  background-color: white;
+  margin: 30px 40px 100px;
+  padding: 20px;
+  height:fit-content;
+}
+
+.toptext{
+  display: inline-block;
+  color: rgb(0, 176, 88);
+  font-size: 2em; 
+  text-shadow: 2px 2px 0px rgba(255, 255, 255, 1),
+  5px 4px 0px rgba(0, 0, 0, 0.15);
+  margin-bottom: 40px;
+}
+
+
+.namebox {
+  display: flex;
+  margin: 20px;
+}
+
+.bar  { 
+  position:relative; 
+  display:block; 
+  width:300px; 
+}
+
+.bar:before, .bar:after   {
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#52ae9f; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+.bar:before {
+  left:50%;
+}
+
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+.appointmentTitle:focus ~ .bar:before, .appointmentTitle:focus ~ .bar:after {
+  width:50%;
+}
+
+/*submit button*/
+.formfooter button{
+  background: #48ad7e;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 500;
+  color:rgb(255, 255, 255);
+  padding: 15px 30px;
+  outline: none;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  margin: 20px 50px 50px 20px;
+  transition: all 0.5s;
+  text-align: center;
+  float: right;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.formfooter button:hover {
+  box-shadow: rgba(255, 255, 255, .2) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+/*text area styling*/
+.inputBoxdesc{
+  margin: 30px 20px 60px 20px;
+  display: flex;
+  font-size:18px;
+}
+
+textarea {
+  width: 70%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #227662;
+  border-radius: 20px;
+  background: url(images/expertbg.jpg) center center no-repeat;
+  font-size: 16px;
+  resize: vertical;
+  color: rgb(25, 91, 62);
+  margin-left: 20px;
+}
+
+.textHead{
+  font-weight: 900;
+  font-size: 2.5vw;
+  text-transform: uppercase;
+  text-align: left;
+  line-height: 1;
+  margin-bottom: 40px;
+}
+
+.fancy {
+  position: relative;
+  white-space: nowrap;
+  &:after {
+    --deco-height: 0.3125em;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(var(--deco-height) * -0.625);
+    height: var(--deco-height);
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23a)'%3E%3Cpath d='M-17 30.5C-1 22 72-4 54 13 37.9 28.2-2.5 57.5 16 55.5s72-29 104-40' stroke='%2300FDCF' stroke-width='10'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='a'%3E%3Cpath fill='%23fff' d='M0 0h100v64H0z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+    background-size: auto 100%;
+    background-repeat: round;
+    background-position: 0em;
+  }
+}
+
+
+/* ------------------------------------ background animation ----------------------------*/
+.area{
+  width: 100%;
+  height:100%;
+}
+
+.circles{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -100;
+}
+
+.circles li{
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 20px;
+  height: 20px;
+  background: rgba(154, 229, 203, 0.2);
+  animation: animate 25s linear infinite;
+  bottom: -150px;
+  
+}
+
+.circles li:nth-child(1){
+  left: 25%;
+  width: 80px;
+  height: 80px;
+  animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+  left: 10%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+  left: 70%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+  left: 40%;
+  width: 60px;
+  height: 60px;
+  animation-delay: 0s;
+  animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+  left: 75%;
+  width: 110px;
+  height: 110px;
+  animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+  left: 35%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+  left: 50%;
+  width: 25px;
+  height: 25px;
+  animation-delay: 15s;
+  animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+  left: 20%;
+  width: 15px;
+  height: 15px;
+  animation-delay: 2s;
+  animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+  left: 85%;
+  width: 150px;
+  height: 150px;
+  animation-delay: 0s;
+  animation-duration: 11s;
+}
+
+
+
+@keyframes animate {
+
+  0%{
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+      border-radius: 0;
+  }
+
+  100%{
+      transform: translateY(-1000px) rotate(720deg);
+      opacity: 0;
+      border-radius: 50%;
+  }
+
+}

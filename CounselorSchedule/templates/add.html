@@ -1,0 +1,55 @@
+{% extends 'counselornav.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'counselorschedulestyle.css' %}">
+<body>
+    <div class="moving_title">
+        <span>A</span>
+        <span>D</span>
+        <span>D</span>
+        <span></span>
+        <span>A</span>
+        <span></span>
+        <span>N</span>
+        <span>E</span>
+        <span>W</span>
+        <span></span>
+        <span>I</span>
+        <span>N</span>
+        <span>F</span>
+        <span>O</span>
+    </div>
+    <br><br>
+    
+    <!-- adding timeslots -->
+    <div class="container1">
+        {% if error %}
+        <center>
+            <div class="error-container">
+                <p>{{ error|slice:'2:'|slice:'0:-2' }}</p>
+            </div>
+        </center>
+        {% endif %}
+        <br>
+        <form action="{% url 'CounselorSchedule:addrec' %}" method="post">
+            {% csrf_token %}
+            <label for="id_date">Date</label><br><br>
+            <input type="date" name="date" id="id_date" min="{{ today_date }}" required><br><br> 
+            <label for="id_start">Start time</label><br><br>
+            <input type="time" name="start" id="id_start" required><br><br>
+            <label for="id_end">End time</label><br><br>
+            <input type="time" name="end" id="id_end" required><br><br>
+            <button type="submit" id="new">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock content %}

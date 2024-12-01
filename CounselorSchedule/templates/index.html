@@ -1,0 +1,52 @@
+{% extends 'counselornav.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'counselorschedulestyle.css' %}">
+
+<!-- showing personal schedule -->
+<body class="schedule">
+    <div class="container">
+        <h1 id="title">MY SCHEDULE</h1>
+        <br><br>
+        <table id="customers" class="design">
+            <thead>
+                <th>DATE</th>
+                <th>DAY</th>
+                <th>START TIME</th>
+                <th>END TIME</th>
+                <th colspan="2" id="mid">EDIT / DELETE</th>
+            </thead>
+            {% for x in slot %}
+            <tbody>
+                <tr>
+                    <td>{{ x.date }}</td>
+                    <td>{{ x.day }}</td>
+                    <td>{{ x.start }}</td>
+                    <td>{{ x.end }}</td>
+                    <td>
+                        <a href="{% url 'CounselorSchedule:update' x.id %}"><button id="up"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                    </td>
+                    <td>
+                        <a href="{% url 'CounselorSchedule:delete' x.id %}"><button id="del"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        <br><br>
+        <a href="{% url 'CounselorSchedule:add' %}"><button id="new3">Add Timeslot</button></a>
+    </div>
+</body>
+
+</html>
+{% endblock content %}

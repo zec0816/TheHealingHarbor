@@ -1,0 +1,334 @@
+body{
+    counter-reset: section;
+    height: 100%;
+}
+
+/* ------------- Before starting quiz ---------------- */
+.StartQuiz {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    padding: 30px 10px;
+    border: 1px solid #000; 
+    border-radius: 10px;
+    margin-top:-5px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    text-align: left;
+    padding-right: 20px;
+    max-width: 50%;
+    justify-content: center;
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+    margin-right: 70px;
+    z-index: 2;
+}
+
+.infos{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.infoquizimg {
+    max-width: 40%;
+    height: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.infoquizimg img {
+    width: 100%;
+    max-height: 80%;
+    display: block;
+    margin: 0 auto;
+}
+
+.headerMain{
+    padding: 40px;
+    margin: 0 20px 50px;
+    border-radius: 20px;
+    background-image: url(images/header2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+}
+
+.infoquiz {
+    background-color: rgba(185, 212, 244, 0.427);
+    padding: 30px 10px;
+    margin: 0 50px 10px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 10px;
+    opacity: 0.7;
+    max-width: 350px;
+    animation: floating 3s ease-in-out infinite;
+}
+
+.infoquiz1 {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infoquiz h4, .infoquiz p, .infoquiz1 p{
+    margin: 8px;
+
+}
+
+@keyframes floating {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+/* start button */
+
+.startbtn button{
+    font-size: 20px;
+    font-weight: 500;
+    color:white;
+    padding: 15px 30px;
+    outline: none;
+    border: none;
+    border-radius: 40px;
+    background: #ff8940;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: all 0.5s;
+}
+
+.startbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.startbtn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+.startbtn span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+  
+.startbtn:hover span {
+    padding-right: 25px;
+}
+  
+.startbtn:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+/* adjusting element with different screen size */
+@media only screen and (max-width: 900px) {
+    .infoquizimg img {
+        display: none;
+    }
+
+    .text {
+        max-width: 100%;
+        margin-right: 0;
+        padding-right: 0;
+    }
+}
+
+/*
+.bgimg body, .bgimg html{
+    object-fit: cover;
+    width: 100%;
+    background-image: url(images/quiz_pattern.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+} 
+*/
+
+/* ------------------ Mental health test form ------------------------- */
+/* Error pop-up */
+.error {
+    margin: 20px 0px;
+    padding: 25px;
+    width: 100%;
+    background-color: #ffb061;
+    color: #ffffff;
+}
+
+.message, .message.error{
+    margin: 15px 0px;
+    margin-top: -15px;
+    padding: 25px;
+    width: 100%;
+    background-color: #ffa361;
+    color: #ffffff;
+    z-index: 10;
+    position: relative;
+}
+
+.closebtn{
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+
+/*Form styling*/
+.quiz-form{
+    margin: 0 auto;
+    margin-right: 20px;
+    padding: 20px;
+    background-color: #c1e6dc;
+    border-radius: 90px;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+  
+.QuizQuestions{
+    height: auto;
+    width: 68vw;
+    margin: 30px 7px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 3px 0px 0px #bebebe88;
+    border-right: 8px solid rgb(59, 161, 81);
+    border-radius: 40px;
+    display: inline-block; 
+}
+
+.QuizQuestions p{
+    padding: 20px;
+    padding-left: 20px;
+    border-bottom: 1px solid #919191;
+}
+  
+table {
+    width: 100%;
+}
+  
+td p:before {
+    counter-increment: section;
+    content: "Question " counter(section) " : ";
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(124, 119, 119);
+    font-size: 18px;
+}
+
+.breakword{
+    word-break: break-word;
+}
+  
+  
+input[type="radio"]{
+    margin: 8px;
+    padding: 8px;
+}
+
+input[type="submit"] {
+    display: block;
+    margin: 50px;
+    margin-bottom: 0;
+    float: right;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 16px;
+}
+  
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+.pre {
+    padding-left: 30px;
+    padding-top: 10px;
+} 
+
+.radioOptions{
+    background: #efefef;
+    display: block;
+    margin: 20px 30px;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.radioOptions:hover{
+    background:#93c58f;
+    transition: 0.4s ease;
+}
+
+.radioOptions.selected{
+    background: #abe0a7;
+}
+
+.header{
+    padding: 10px;
+    border: 1px solid #ffffff;
+    height: 30vh;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    background-image: url(images/header.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: -30px;
+}
+
+.unanswered {
+    border-right: 8px solid rgb(237, 123, 42);
+  }
+
+
+.formStart{
+    display: none;
+}
+
+

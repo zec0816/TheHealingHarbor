@@ -1,0 +1,204 @@
+.container {
+    padding: 0px 90px 90px 90px;
+    margin-left: -70px;
+}
+
+.design{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.design tbody tr:last-of-type {
+    border-bottom: 2px solid white;
+}
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td,
+#customers th {
+    padding: 15px;
+}
+
+#customers tr {
+    background-color: #f2f2f2;
+}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #17B09B;
+    color: white;
+}
+
+#customers #mid {
+    text-align: center;
+}
+
+#customers #up {
+    background-color: #627269;
+    border-color: white;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+}
+
+#customers #del {
+    background-color: #D1493E;
+    border-color: white;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+}
+
+#customers button {
+    width: 75%;
+    margin-left: 8px;
+}
+
+.container1 #new {
+    background-color: #627269;
+    border-color: white;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+}
+
+.container1{
+    padding: 8px;
+}
+
+.container1{
+    padding: 0px 100px 100px 100px;
+}
+
+.container #new3 {
+    padding: 13px;
+    background-color: #627269;
+    color: white;
+    border-color: white;
+    border-radius: 5px;
+}
+
+.container #new3, #customers button:active {
+    opacity: 0.8;
+}
+
+.schedule {
+    background: #ECECEC;
+    background-image: url("schedule_pattern.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#customers tbody tr:hover {
+    background-color: #d9d9d9;
+}
+
+.container1 {
+    max-width: 680px;
+    margin: 0px auto 20px 100px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container1 {
+  background-color: rgb(222, 226, 217);
+}
+
+
+#title {
+    margin-bottom: 20px;
+    color: #0f6e62;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.moving_title {
+    position: relative;
+    -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+    font-size: 30px;
+    margin-left: 100px;
+}
+
+.moving_title span {
+    font-family: 'impact';
+    position: relative;
+    display: inline-block;
+    color: black;
+    animation: moving_title 1s infinite;
+}
+
+@keyframes moving_title {
+    0%,
+    40%,
+    100% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-20px);
+    }
+}
+
+.error-container {
+    background-color: white;
+    padding: 10px;
+    color: black;
+}
+
+
+/* stying message */
+.message, .message.success, .message.error{
+    margin: 20px 0px 10px;
+    margin-top: -15px;
+    padding: 25px;
+    width: 100%;
+    background-color: #19b411;
+    color: #ffffff;
+    z-index: 10;
+    position: relative;
+}
+
+.closebtn{
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+.message.error{
+        background-color: #f19844;
+}
+
+
+  

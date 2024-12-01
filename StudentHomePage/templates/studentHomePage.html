@@ -1,0 +1,77 @@
+{% extends 'studentnavbar.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--style for StudentHome.html-->
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'studenthomepagestyle.css' %}">
+        <!--Icons-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Student Home</title>
+    </head>
+    
+    <body>
+        {% if message %}
+        <div class="messageRed" id="message">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <p id="reminder" class="reminder">{{ message }}</p>
+        </div>
+        {% endif %}
+        {% if not info %}
+        <div class="message" id="message">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <p id="reminder" class="reminder">No infos are published now.</p>
+        </div>
+        {% endif %}
+       <div class="InfoPage">
+        <div class="intro">
+            <h1>Mental Wellness: Taking Care of Your Mental Health</h1>
+            <p><i><br>Empowering Minds, Embracing Wellness: Your Journey to Mental Well-Being Begins Here</i></p>
+        </div>
+        {% if info %}
+        <div class="main">  
+            <div class="infos">
+                {% for x in info %}
+                <table> 
+                    <div class="Infocontent">
+                        <tr>
+                            <td>
+                                <div class="t1">
+                                    <h3>{{x.title}}</h3>
+                                </div>
+                                <div class="date">
+                                    <p>published on {{x.created_date.date}}</p>
+                                </div>
+                                <div class="t2">
+                                    <p>{{x.info}}</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </div>
+                </table>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="area" >
+        <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+    </div >
+    </body>
+</html>
+{% endblock content %}

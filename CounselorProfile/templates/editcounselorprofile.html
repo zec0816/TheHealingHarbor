@@ -1,0 +1,46 @@
+{% extends 'counselornav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'counselorschedulestyle.css' %}">
+        <title>Edit Profile</title>
+    </head>
+
+    <body>
+        <!-- animated title -->
+        <div class="moving_title">
+            <span>E</span>
+            <span>D</span>
+            <span>I</span>
+            <span>T</span>
+            <span></span>
+            <span>P</span>
+            <span>R</span>
+            <span>O</span>
+            <span>F</span>
+            <span>I</span>
+            <span>L</span>
+            <span>E</span>
+        </div>
+        <br><br>
+        <!-- form to edit personal information -->
+        <div class="container1">
+            <form action="{% url 'CounselorProfile:counseloredit' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ counselor_form.as_p }}
+                <br>
+                <button type="submit" id="new">Save Changes</button>
+                <button type="reset" id="new">Reset</button>
+            </form>
+        </div>
+
+    </body>
+</html>
+
+{% endblock content %}

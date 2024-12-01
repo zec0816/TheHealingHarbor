@@ -1,0 +1,44 @@
+{% extends 'counselornav.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'counselorschedulestyle.css' %}">
+
+<body>
+    <!-- styling title -->
+    <div class="moving_title">
+        <span>A</span>
+        <span>D</span>
+        <span>D</span>
+        <span></span>
+        <span>A</span>
+        <span>N</span>
+        <span></span>
+        <span>I</span>
+        <span>N</span>
+        <span>F</span>
+        <span>O</span>
+    </div>
+    <br><br>
+    <div class="container1">
+        <!-- form to add info -->
+        <form action="{% url 'infosection:infoaddrec' %}" method="post">
+            {% csrf_token %}
+            <label for="">Title</label><br><br>
+            <input type="text" name="title" required><br><br> 
+            <label for="">Info</label><br><br>
+            <textarea name="info" id="info" rows="15" cols="70" required></textarea><br><br> 
+            <button type="submit" id="new">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock content %}

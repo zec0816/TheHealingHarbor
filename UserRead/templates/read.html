@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'readstyle.css' %}">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <!--Icons-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Read</title>
+    </head>
+    <body>
+
+        <div class="ReadPage">
+            <header class="navbar">
+                <img src="{% static 'images/logo.png' %}" class="logo">
+                <nav class="navigation">
+                    <a href="{% url 'Home:home' %}">Home</a>
+                    <a href="{% url 'UserTestimonial:testimonial' %}">Inspire</a>
+                    <a href="{% url 'UserExercise:exercise' %}">Nurture</a>
+                    <a href="{% url 'UserRead:read' %}" class="active">Explore</a>
+                    <a href="{% url 'Home:login' %}">Log In</a>
+                </nav>
+            </header>
+            <div class="header">
+                <div class="titletop">
+                  <p class="title">Find your</p>
+                  <p class="title">Best Friend.</p>
+                  <p class="desc">Any pages turned today?</p>
+                </div>
+
+                <div class="scene">
+                    <div class="book-wrap">
+                      <div class="left-side">
+                        <div class="book-cover-left"></div>
+                        <div class="layer1">
+                          <div class="page-left"></div>
+                        </div>
+                        <div class="layer2">
+                          <div class="page-left"></div>
+                        </div>
+                        <div class="layer3">
+                          <div class="page-left"></div>
+                        </div>
+                        <div class="layer4">
+                          <div class="page-left"></div>
+                        </div>
+                        <div class="layer-text">
+                          <div class="page-left-2">
+                            <div class="corner"></div>
+                            <div class="corner2"></div>
+                            <div class="corner-fold"></div>
+                            <div class="page-text w-richtext">
+                              <h3><strong>Do you know?</strong></h3>
+                              <p>‍</p>
+                              <p>Reading actually help your mental health!</p><br>
+                              <p>It's like having a never-ending sleepover with your funniest friends. You can have a tea party with the Mad Hatter, solve mysteries with Sherlock Holmes, and go on epic quests with brave knights – all without leaving your cozy reading nook!</p>
+                              <p></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="center"></div>
+                      <div class="right-side">
+                        <div class="book-cover-right"></div>
+                        <div class="layer1">
+                          <div class="page-right"></div>
+                        </div>
+                        <div class="layer2 right">
+                          <div class="page-right"></div>
+                        </div>
+                        <div class="layer3 right">
+                          <div class="page-right"></div>
+                        </div>
+                        <div class="layer4 right">
+                          <div class="page-right"></div>
+                        </div>
+                        <div class="layer-text right">
+                          <div class="page-right-2">
+                            <div class="page-text w-richtext">
+                              <br>
+                              <p>‍</p>
+                              <p><p>So, why not grab a book, snuggle up with a fuzzy blanket, and let your mind dance in the rainbows of storytelling magic?</p></p><br><br>
+                              <p>Let's dive into the sea of books!</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            
+            <section class="div2">
+            <div class="featured" id="featured">
+                <h1 class="heading"><span>Featured books</span></h1>
+                <div class="swiper featured-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide box">
+                          <div class="bookcontainer">
+                            <div class="book">
+                              <div class="inner-book">
+                                <div class="img" style="padding-top: calc(1.07 * 100%)">
+                                  <img src="{% static 'images/mood.png' %}" />
+                                </div>
+                                <div class="page"></div>
+                                <div class="page page-2"></div>
+                                <div class="page page-3"></div>
+                                <div class="page page-4"></div>
+                                <div class="page page-5"></div>
+                                
+                              </div>
+                            </div>
+                          </div>
+                          <div class="content">
+                            <h3>Mood Crew®</h3>
+                            <a href="{% url 'UserRead:book1' %}" class="btn">Read</a>
+                          </div>
+                        </div>
+
+                        <div class="swiper-slide box">
+                            <div class="bookcontainer">
+                              <div class="book">
+                                <div class="inner-book">
+                                  <div class="img" style="padding-top: calc(1.07 * 100%)">
+                                    <img src="{% static 'images/gandhi.jpg' %}" />
+                                  </div>
+                                  <div class="page"></div>
+                                  <div class="page page-2"></div>
+                                  <div class="page page-3"></div>
+                                  <div class="page page-4"></div>
+                                  <div class="page page-5"></div>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                            <div class="content">
+                              <h3>Walk with Gandhi</h3>
+                              <a href="{% url 'UserRead:book2' %}" class="btn">Read</a>
+                            </div>
+                          </div>
+
+                          <div class="swiper-slide box">
+                            <div class="bookcontainer">
+                              <div class="book">
+                                <div class="inner-book">
+                                  <div class="img" style="padding-top: calc(1.07 * 100%)">
+                                    <img src="{% static 'images/blue.jpg' %}" />
+                                  </div>
+                                  <div class="page"></div>
+                                  <div class="page page-2"></div>
+                                  <div class="page page-3"></div>
+                                  <div class="page page-4"></div>
+                                  <div class="page page-5"></div>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                            <div class="content">
+                              <h3>Dekko Comics</h3>
+                              <a href="{% url 'UserRead:book3' %}" class="btn">Read</a>
+                            </div>
+                          </div>
+
+                          <div class="swiper-slide box">
+                            <div class="bookcontainer">
+                              <div class="book">
+                                <div class="inner-book">
+                                  <div class="img" style="padding-top: calc(1.07 * 100%)">
+                                    <img src="{% static 'images/bipolar.png' %}" />
+                                  </div>
+                                  <div class="page"></div>
+                                  <div class="page page-2"></div>
+                                  <div class="page page-3"></div>
+                                  <div class="page page-4"></div>
+                                  <div class="page page-5"></div>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                            <div class="content">
+                              <h3>Living Bipolar</h3>
+                              <a href="{% url 'UserRead:book4' %}" class="btn">Read</a>
+                            </div>
+                          </div>
+
+                          <div class="swiper-slide box">
+                            <div class="bookcontainer">
+                              <div class="book">
+                                <div class="inner-book">
+                                  <div class="img" style="padding-top: calc(1.07 * 100%)">
+                                    <img src="{% static 'images/toad.png' %}" />
+                                  </div>
+                                  <div class="page"></div>
+                                  <div class="page page-2"></div>
+                                  <div class="page page-3"></div>
+                                  <div class="page page-4"></div>
+                                  <div class="page page-5"></div>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                            <div class="content">
+                              <h3>Counselling for Toads: A psychological Adventure [Mandarin]</h3>
+                              <a href="{% url 'UserRead:book5' %}" class="btn">Read</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
+        </div>
+
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script>
+                                              
+const swiper = new Swiper(".featured-slider", {
+    spaceBetween: 30,
+    loop:true,
+    centeredSlides:true, 
+    autoplay: {
+        delay: 6500,
+        disableOnInteraction: false,
+    },
+    navigation:{
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+        },
+        450: {
+            slidesPerView: 2,
+        },
+        768: {
+            slidesPerView: 3,
+        },
+        1024: {
+            slidesPerView: 4,
+        },
+    },
+});
+
+window.onscroll = () => {
+          const nav = document.querySelector('.navbar');
+          if(this.scrollY <= 230) nav.className = 'navbar'; else nav.className = 'navbar scroll';
+        };
+
+        </script>
+    </body>
+</html>

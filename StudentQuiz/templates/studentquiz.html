@@ -1,0 +1,104 @@
+{% extends 'studentnavbar.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'studentquizstyle.css' %}">
+    <title>Student Quiz</title>
+  </head>
+
+  <body>
+    {% if messages %}
+        {% for message in messages %}
+          <div class="message {% if message.tags %}{% spaceless %}{% for tag in message.tags %}{{ tag }}{% endfor %}{% endspaceless %}{% endif %}">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ message }}
+          </div>
+        {% endfor %}
+    {% endif %}
+    {% if message %}
+        <div class="message" id="message">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          <p id="reminder" class="reminder">{{ message }}</p>
+        </div>
+    {% endif %}
+    <div class="StartQuiz">
+      <div class="text">
+      <div class="beforeQuizList">
+        <div class="headerMain">
+          <p><strong>Self Mental Health Test</strong></p>
+        </div>
+
+        <div class="infos">
+          <div class="infoquiz">
+            <i class="fa fa-pencil" style="font-size:48px"></i>
+            <h4>Complete The Test</h4>
+            <p>Be you and answer honestly to know more about yourself.</p>
+          </div>
+
+          <div class="infoquiz1">
+            <p>Worrying about your mental health?</p>
+            <p>Take our short online test now!</p>
+          </div>
+        </div>
+        <!--disable button if theres no question available--> 
+        <div class="startbtn">
+          <button onclick="showForm()" {% if message %}disabled{% endif %}><span>Start Test</span></button>
+        </div>  
+      </div>
+    </div>
+        
+        <div class="infoquizimg">
+          <img src="{% static 'images/mentalHealth.png' %}">
+        </div>
+    </div>
+
+    <div class="formStart">
+      <div class="header"></div>
+
+      <div class="error" id="error" style="display: none;">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        <p id="errorMessagequiz" class="errorMessagequiz">Please answer all the questions!</p>
+      </div>
+    
+      <div class="quiz-form">
+        <form method="post" action="{% url 'StudentQuiz:result' %}" id="quiz-form" onsubmit="return validateForm()" autocomplete="off">
+          <p class="pre">Your answers are based on the past few weeks. :D</p>
+          {% csrf_token %}
+          {% for question in questions %}
+
+          <div class="QuizQuestions" id="QuizQuestions">
+            <table>
+              <tr>
+                <td class="breakword"><p>{{ question.question_text }}</p></td>
+              </tr>
+              <tr>
+                <td class="breakword">
+                  {% for option in question.quizoption_set.all %}
+                  <label class="radioOptions" onclick="clickRadio(this)">
+                    <input type="radio" name="question{{ question.id }}" id="option{{ forloop.counter }}" value="{{ option.id }}">
+                    {{ option.option_text }}
+                  </label>
+                  {% endfor %}
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          {% endfor %}
+          <input type="submit" value="See Result" class="submitbtn">
+        </form>
+      </div>
+    </div>
+    
+    <script src="{% static 'studentquiz.js' %}">
+      var backURL = "{% url 'StudentQuiz:quiz' %}";
+    </script>
+  </body>
+</html>
+{% endblock content %}

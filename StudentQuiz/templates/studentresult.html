@@ -1,0 +1,112 @@
+{% extends 'studentnavbar.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'studentresultstyle.css' %}">
+    <title>Results</title>
+  </head>
+
+  <body>
+    <!-- =============== Loading page before displaying result ==================== -->
+    <div class="beforeResultPage">
+      <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="message"><p>Loading...</p></div>
+    </div>
+    
+    <!-- ======================== Displaying result ============================ -->
+    <div class="ResultPage"  style="display: none;">
+      <!-- background animation -->
+      <div class="animated">
+        <ul class="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>  
+      </div>
+      
+      <h1>Your Test Result</h1>
+      <h3>Total score : {{ total_score }}</h3>
+      <!-- Terrible mental health-->
+      
+      <div class="resultmain">
+        <div class="result">
+          {% if total_score > high_threshold %}
+            <img src="{% static 'images/mentalHealth9.gif' %}" class="resultpic">
+            <p class="resulttext1">
+              What's up, rockstar? Things are tough at your end. But, you know what, it's not a sign of weakness 
+              nor a failure. While you're doing your best, there's something that needs immediate attention 
+              or significant effects that could occur on your mental health.<br><br>
+              <strong>Expert tip : </strong>Count to 10 slowly, inhale and exhale,
+              imagining your problems fade away. <br><br>
+              How about you get in touch with an expert?
+            </p>
+            <div class="btn">
+              <button class="retake1" onclick="redirectToQuizPage()">Retake Test</button>
+              <button class="retake11" onclick="redirectToExpertPage()">Find an Expert</button>
+            </div>
+
+          <!--Normal mental health-->
+          {% elif total_score > normal_threshold %}
+            <img src="{% static 'images/mentalHealth10.gif' %}" class="resultpic">
+            <p class="resulttext2">
+              Your mental health is in a good place, my friend, but there are some minor areas that could use improvement.
+              Don't underestimate those and remember to prioritize self-care. You've got this! <br><br>
+              Seeking help or guidance when necessary can continue leading you to a mentally healthy life. :D
+            </p>
+            <div class="btn">
+              <button class="retake2" onclick="redirectToQuizPage()">Retake Test</button>
+            </div>
+
+          <!-- Excellent mental health-->
+          {% else %}
+          <img src="{% static 'images/mentalHealth8.gif' %}" class="resultpic">
+          <p class="resulttext3">
+            Whoa, hold up, mental health champ! Scoring low may just pay it off in this case! Kudos, your mental health is good! Looks like
+            you've been taking good care of yourself. Doing those little "Chill, you've got this" self tasks are 
+            helping you now. Hope you're not masking your symptoms and truly living your life mentally good. Keep up the great work, pal!
+          </p>
+          <div class="btn">
+            <button class="retake3" onclick="redirectToQuizPage()">Retake Test</button>
+          </div>
+          {% endif %}
+          
+        </div>
+      </div>
+      
+
+      <script>
+        setTimeout(function() {
+        document.querySelector(".beforeResultPage").style.display = "none";
+        document.querySelector(".ResultPage").style.display = "block";
+        }, 3000); 
+
+        function redirectToQuizPage() {
+          window.location.href = "{% url 'StudentQuiz:quiz' %}";
+        }
+
+        function redirectToExpertPage() {
+          window.location.href = "{% url 'StudentAppointment:experts' %}";
+        } 
+      </script>
+  </body>
+</html>
+{% endblock content %}

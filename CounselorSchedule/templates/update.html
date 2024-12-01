@@ -1,0 +1,55 @@
+{% extends 'counselornav.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'counselorschedulestyle.css' %}">
+<body>
+    <div class="moving_title">
+        <span>U</span>
+        <span>P</span>
+        <span>D</span>
+        <span>A</span>
+        <span>T</span>
+        <span>E</span>
+        <span></span>
+        <span>T</span>
+        <span>I</span>
+        <span>M</span>
+        <span>E</span>
+        <span>S</span>
+        <span>L</span>
+        <span>O</span>
+        <span>T</span>
+    </div>
+    <br><br>
+<!-- updating the schedule -->
+    <div class="container1">
+        {% if error %}
+        <center>
+            <div class="error-container">
+                <p>{{ error|slice:'2:'|slice:'0:-2' }}</p>
+            </div>
+        </center>
+        {% endif %}
+        <br>
+        <form action="{% url 'CounselorSchedule:uprec' slot.id %}" method="post">
+            {% csrf_token %}
+            <label for="id_date">Date</label><br><br>
+            <input type="date" name="date" id="id_date" min="{{ today_date }}" value="{{ slot.date|date:'Y-m-d' }}"><br><br>
+            <label for="id_start">Start Time</label><br><br>
+            <input type="time" name="start" id="id_start" value="{{ slot.start|time:'H:i' }}"><br><br>
+            <label for="id_end">End Time</label><br><br>
+            <input type="time" name="end" id="id_end" value="{{ slot.end|time:'H:i' }}"><br><br>
+            <button type="submit" id="new">Update</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock content %}

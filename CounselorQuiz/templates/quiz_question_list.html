@@ -1,0 +1,33 @@
+{% extends 'counselornav.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Quiz</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'quiz_style.css' %}">
+<body>
+    <!-- viewing questions -->
+    <h1 id="title">Mental Health Quiz</h1>
+    <br><br>
+    {% for question in questions %}
+        <div class="question-container">
+            <h3 class="question-text">{{ question.question_text }}</h3>
+            <ul class="option-list">
+                {% for option in question.quizoption_set.all %}
+                    <li class="option-item">{{ option.option_text }} ({{ option.score }})</li>
+                {% endfor %}
+            </ul>
+            <br>
+            <a href="{% url 'CounselorQuiz:quiz_question_update' question.id %}"><button id="up"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+            <a href="{% url 'CounselorQuiz:quiz_question_delete' question.id %}"><button id="del"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a>
+        </div>
+    {% endfor %}
+    <a href="{% url 'CounselorQuiz:quiz_question_create' %}"><button id="add">Add Question</button></a>
+</body>
+</html>
+{% endblock content %}

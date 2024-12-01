@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'loginsignupstyle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Log In</title>
+</head>
+
+<body>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="message {% if message.tags %}{% spaceless %}{% for tag in message.tags %}{{ tag }}{% endfor %}{% endspaceless %}{% endif %}">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+       
+    <div class="form">
+        <div class="login-container">
+            <div class="form-start">
+                <center><h3 class="start-text">Sign In</h3></center>
+            </div>
+            <br>
+            <div class="form-body">
+                <form action="{% url 'Home:login' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="form-button">
+                        <button name="login" class="formbtn" id="login">Sign in</button>
+                    </div>
+                </form>
+            </div>
+            <div class="form-end">
+                <div class="form-link">
+                    <a href="{% url 'Home:signup' %}">Don't have an account? Sign Up now</a><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

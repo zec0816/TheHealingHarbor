@@ -1,0 +1,89 @@
+{% extends 'studentnavbar.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Diary</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'studentdiarystyle.css' %}">
+    <style>
+
+    </style>
+</head>
+<body class="student-diary">
+    <div class="book">
+        <center>
+            <div class="book-cover" id="bookCover">
+                <img src="{% static 'images/diary.jpg' %}" alt="Book Cover">
+                <button id="flipButton" onclick="flipBook()">Click to Flip</button>
+            </div>
+        </center>
+        <div class="book-content">
+            <div class="infos">
+                <div class="main">
+                    <table>
+                        <div class="content">
+                            {% for x in diary %}
+                            <tr>
+                                <td>
+                                    <div class="info-title">{{x.title}}</div>
+                                    <div class="entry-date">{{x.created_date}}</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="entry-content">{{x.diary}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="diaryupdate/{{x.id}}"><button id="up"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                                    <a href="diarydelete/{{x.id}}"><button id="del"><i class="fa fa-trash-o" aria-hidden="true"></i></button></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </div>
+                    </table>
+                    <br>
+                    <a href="{% url 'StudentDiary:diaryadd' %}"><button id="new3">Add a diary</button></a>
+                    <br><br>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="area">
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        let bookFlipped = false;
+    
+        function flipBook() {
+            const bookCover = document.getElementById('bookCover');
+            const bookContent = document.querySelector('.book-content');
+            if (!bookFlipped) {
+                bookCover.style.transform = 'rotateY(-180deg)';
+                bookContent.style.transform = 'rotateY(0)';
+            } else {
+                bookCover.style.transform = 'rotateY(0)';
+                bookContent.style.transform = 'rotateY(180deg)';
+            }
+            bookFlipped = !bookFlipped;
+        }
+    </script>
+    <br><br>
+</body>
+</html>
+{% endblock content %}

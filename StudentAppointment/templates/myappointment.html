@@ -1,0 +1,82 @@
+{% extends 'studentnavbar.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'myappointmentstyle.css' %}">
+        <!--Icons-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>My Appointments</title>
+    </head>
+    
+    <body>
+      {% if messages %}
+        {% for message in messages %}
+          <div class="message {% if message.tags %}{% spaceless %}{% for tag in message.tags %}{{ tag }}{% endfor %}{% endspaceless %}{% endif %}">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+        
+        {% if message %}
+            <div class="message" id="message">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              <p id="reminder" class="reminder">{{ message }}</p>
+            </div>
+        {% endif %}
+
+        <div class="myAppointmentPage">
+            
+            <span class="head">Upcoming Appointments</span>
+            <div class="tableAppointment">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Counselor Name</th>
+                            <th>Counselor Contact</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    {% for appoint in appointment %}
+                    <div class="tablerow">
+                      <tr class="row1">
+                        <td class="date" rowspan="2">{{ appoint.timeslot.date }}</td>
+                        <td class="time" rowspan="2">{{ appoint.timeslot }}</td>
+                        
+                        <td class="name" rowspan="2">{{ appoint.counselor.full_name }}</td>
+                        <td class="contact">Email: {{ appoint.counselor }}</td>
+                        <td class="action" rowspan="2"><a class="delete" href="{% url 'StudentAppointment:deleteAppointment' appoint.id %}"><i class="fa fa-trash-o"></i></a></td>
+                      </tr>
+                      <tr class="row">
+                        <td class="contact">Mobile No.: {{ appoint.counselor.phone_number }}</td>
+                      </tr>
+                    </div>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <div class="area" >
+          <ul class="circles">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+          </ul>
+        </div>
+    </body>
+</html>
+
+{% endblock content %}

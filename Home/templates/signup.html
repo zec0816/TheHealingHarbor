@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'loginsignupstyle.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Sign up</title>
+</head>
+
+<body>
+    <div class="form">
+        <div class="signup-container">
+            <div class="form-start">
+                <center><h3 class="start-text">Create an Account</h3></center>
+            </div>
+            <br>
+            <div class="form-body">
+                <form action="{% url 'Home:signup' %}" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="form-button">
+                        <button type="submit" class="formbtn">Sign Up</button><br><br>
+                    </div>
+                </form>
+            </div>
+            <div class="form-end">
+                <div class="form-link">
+                    <a href="{% url 'Home:login' %}">Already have an account? Sign in now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</body>
+
+</html>
