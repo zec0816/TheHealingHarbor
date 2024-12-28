@@ -98,6 +98,11 @@
                     <iframe id="exercise-video" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <br><br><br><br>
+                <div class="controls-wrapper">
+                    <div id="timer">00:00</div>
+                    <button id="start-btn">Start</button>
+                    <button id="stop-btn">Stop</button>
+                </div>
             </div>
         </div>
         <div class="area">
@@ -150,7 +155,49 @@
                 const videoSrc = `https://www.youtube.com/embed/${videoId}?autoplay=0`;
                 $("#exercise-video").attr("src", videoSrc);
                 $("#video-popup .overlay").show();
+
+                // Show the timer and buttons
+                $("#timer").show();
+                $("#start-btn").show();
+                $("#stop-btn").show();
             }
+
+            function startTimer() {
+                seconds = 0;
+                updateTimerDisplay();
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+
+            function stopTimer() {
+                clearInterval(timerInterval);
+
+                if (seconds < 10 * 60) {
+                    alert("Great job! Even a short burst of exercise can have positive effects on your mood and well-being. Keep it up!");
+                } else if (seconds >= 10 * 60 && seconds <= 20 * 60) {
+                    alert("Well done! You're making progress and taking care of yourself. Remember, consistency is key, and you're doing great!");
+                } else if (seconds > 20 * 60) {
+                    alert("Congratulations! Your dedication to exercise is paying off, and you're making your mental health a priority. Keep challenging yourself and remember how far you've come!");
+                }
+            }
+
+            function updateTimer() {
+                seconds++;
+                updateTimerDisplay();
+            }
+
+            function updateTimerDisplay() {
+                const minutes = Math.floor(seconds / 60);
+                const formattedSeconds = String(seconds % 60).padStart(2, '0');
+                $("#timer").text(`${minutes}:${formattedSeconds}`);
+            }
+
+            $("#start-btn").on("click", function() {
+                startTimer();
+            });
+
+            $("#stop-btn").on("click", function() {
+                stopTimer();
+            });
         });
     </script>
 </body>

@@ -32,9 +32,9 @@
             <a href="{% url 'infosection:info' %}" class="{% if request.resolver_match.url_name == 'info' %}active{% endif %}"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
             <a href="{% url 'CounselorProfile:counselorprofile' %}" class="{% if request.resolver_match.url_name == 'profile' %}active{% endif %}"><i class="fa fa-user-circle-o" aria-hidden="true"></i>My profile</a>
             <a href="{% url 'CounselorSchedule:index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}" id="box"><i class="fa fa-table" aria-hidden="true"></i>My Schedule</a>
-            <!-- <a href="{% url 'CounselorAppointment:counselor_appointments'%}" id="box"><i class="fa fa-calendar-o" aria-hidden="true"></i>Appointments</a>
+            <a href="{% url 'CounselorAppointment:counselor_appointments'%}" id="box"><i class="fa fa-calendar-o" aria-hidden="true"></i>Appointments</a>
             <a href="{% url 'CounselorQuiz:quiz_question_list' %}" class="{% if request.resolver_match.url_name == 'quiz_question_list' %}active{% endif %}" id="box"><i class="fa fa-file-text-o" aria-hidden="true"></i>Mental Health Quiz</a>
-            <a href="{% url 'CounselorProgressReport:progress' %}" class="{% if request.resolver_match.url_name == 'progress' %}active{% endif %}" id="box"><i class="fa fa-book" aria-hidden="true"></i>Progress Report</a> -->
+            <a href="{% url 'CounselorProgressReport:progress' %}" class="{% if request.resolver_match.url_name == 'progress' %}active{% endif %}" id="box"><i class="fa fa-book" aria-hidden="true"></i>Progress Report</a>
             <a href="{% url 'Home:home' %}" class="{% if request.resolver_match.url_name == 'home'}"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a>
           </div>
         </aside>

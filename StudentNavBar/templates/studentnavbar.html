@@ -18,10 +18,10 @@
                 <div class="option">
                     <a href="{% url 'StudentHomePage:index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
                     <a href="{% url 'StudentProfile:studentprofile' %}" class="{% if request.resolver_match.url_name == 'studentprofile' or request.resolver_match.url_name == 'studentedit' or request.resolver_match.url_name == 'studentchangepassword'%}active{% endif %}"><i class="fa fa-user-circle-o" aria-hidden="true"></i>My profile</a>
-                    <!-- <a href="{% url 'StudentDiary:diary' %}" class="{% if request.resolver_match.url_name == 'diary' %}active{% endif %}"><i class="fa fa-book" aria-hidden="true"></i>Diary</a>
+                    <!-- <a href="{% url 'StudentDiary:diary' %}" class="{% if request.resolver_match.url_name == 'diary' %}active{% endif %}"><i class="fa fa-book" aria-hidden="true"></i>Diary</a> -->
                     <a href="{% url 'StudentAppointment:myAppointment' %}" class="{% if request.resolver_match.url_name == 'myAppointment'%}active{% endif %}"><i class="fa fa-calendar-o" aria-hidden="true"></i>Appointment</a>
                     <a href="{% url 'StudentAppointment:experts' %}" class="{% if request.resolver_match.url_name == 'experts' or request.resolver_match.url_name == 'appointment'%}active{% endif %}"><i class="fa fa-group" aria-hidden="true"></i>Experts</a>
-                    <a href="{% url 'StudentQuiz:quiz' %}" class="{% if request.resolver_match.url_name == 'quiz' or request.resolver_match.url_name == 'result' %}active{% endif %}"><i class="fa fa-edit" aria-hidden="true"></i>Assessment</a> -->
+                    <a href="{% url 'StudentQuiz:quiz' %}" class="{% if request.resolver_match.url_name == 'quiz' or request.resolver_match.url_name == 'result' %}active{% endif %}"><i class="fa fa-edit" aria-hidden="true"></i>Assessment</a>
                     <a href="{% url 'Home:logout' %}" class="{% if request.resolver_match.url_name == 'logout'}"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a>
                 </div>
             </aside>

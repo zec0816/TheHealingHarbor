@@ -17,9 +17,12 @@
       <h1>Mental Wellness: Taking Care of Your Mental Health</h1><br><br>
       <p><i>Empowering Minds, Embracing Wellness: Your Journey to Mental Well-Being Begins Here</i></p>
     </div>
-    <br>
+    <br><br><br>
     <div class="infos">
-      <table>
+      <!-- Search bar -->
+      <input type="text" id="searchBar" placeholder="Search information..." onkeyup="filterTable()" 
+      style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #333; border-radius: 5px;">
+      <table id="infoTable">
         <div class="content">
           {% for x in info %}
           <tr>
@@ -50,6 +53,28 @@
     </div>
   </div>
   <br><br>
+  <script>
+    function filterTable() {
+      const input = document.getElementById("searchBar");
+      const filter = input.value.toLowerCase();
+      const table = document.getElementById("infoTable");
+      const rows = table.getElementsByTagName("tr");
+
+      for (let i = 0; i < rows.length; i++) {
+        const title = rows[i].getElementsByTagName("td")[0];
+        const info = rows[i].getElementsByTagName("td")[1];
+        if (title || info) {
+          const titleText = title.textContent || title.innerText;
+          const infoText = info.textContent || info.innerText;
+          if (titleText.toLowerCase().indexOf(filter) > -1 || infoText.toLowerCase().indexOf(filter) > -1) {
+            rows[i].style.display = "";
+          } else {
+            rows[i].style.display = "none";
+          }
+        }
+      }
+    }
+  </script>
 </body>
 </html>
 {% endblock content %}

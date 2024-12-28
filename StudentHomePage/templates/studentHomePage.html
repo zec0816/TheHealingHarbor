@@ -6,10 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--style for StudentHome.html-->
-        {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'studenthomepagestyle.css' %}">
-        <!--Icons-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Student Home</title>
     </head>
@@ -31,6 +28,10 @@
         <div class="intro">
             <h1>Mental Wellness: Taking Care of Your Mental Health</h1>
             <p><i><br>Empowering Minds, Embracing Wellness: Your Journey to Mental Well-Being Begins Here</i></p>
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="search" placeholder="Search..." onkeyup="searchPosts()" />
+            </div>
         </div>
         {% if info %}
         <div class="main">  
@@ -58,20 +59,39 @@
         </div>
         {% endif %}
     </div>
-    <div class="area" >
+    <div class="area">
         <ul class="circles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
         </ul>
-    </div >
+    </div>
+    
+    <script>
+    function searchPosts() {
+        const input = document.getElementById('search');
+        const filter = input.value.toLowerCase();
+        const posts = document.querySelectorAll('.infos tr');
+
+        posts.forEach(post => {
+            const title = post.querySelector('.t1 h3').innerText.toLowerCase();
+            const content = post.querySelector('.t2 p').innerText.toLowerCase();
+
+            if (title.includes(filter) || content.includes(filter)) {
+                post.style.display = ''; // Show the post if it matches
+            } else {
+                post.style.display = 'none'; // Hide the post if it doesn't match
+            }
+        });
+    }
+    </script>
     </body>
 </html>
 {% endblock content %}
